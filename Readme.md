@@ -20,14 +20,14 @@ Change directory into the project folder and build the base python image used fo
 
 Spin up other services needed for the project that are specified in **_docker-compose.yml_** file by running the command `docker-compose up`. At this moment, your project should be up and running with a warning that _you have unapplied migrations_.
 
-Open up another terminal and run this command `docker-compose exec api python project/manage.py makemigrations` for creating new migrations based on the models defined and also run `docker compose exec api python project/manage.py migrate` to apply migrations.
+Open up another terminal and run this command `docker-compose run web python server_calculator/manage.py makemigrations` for creating new migrations based on the models defined and also run `docker compose run web python server_calculator/manage.py migrate` to apply migrations.
 
 In summary, these are the lists of commands to run in listed order, to start up the project.
 
 ```docker
 1. git clone https://github.com/Tochjosh/Server-hardware-allocator.git
 2. cd bouncer-api
-3. docker build
+3. docker build (Note that you can skip this step and run the next command to automatically build and start the project)
 4. docker-compose up
 5. docker-compose run web python server_calculator/manage.py makemigrations
 6. docker-compose run web python server_calculator/manage.py migrate
@@ -68,4 +68,4 @@ docker-compose run web python server_calculator/manage.py test server_calculator
 
 ## License
 
-The MIT License - Copyright (c) 2020 - Present, Decagon Institute. https://decagonhq.com/
+The MIT License - Copyright (c) 2022
