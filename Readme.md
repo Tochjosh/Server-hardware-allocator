@@ -46,6 +46,7 @@ The initial view should look like this:
 This api takes the properties of a server as an object, and also a list of object of properties of virtual machine as shown below:
 
 Server type = {"CPU": 2, "RAM": 32, "HDD": 100}
+
 Virtual Machines = [{"CPU": 1, "RAM": 16,"HDD": 10}, {"CPU": 1, "RAM": 16, "HDD": 10}, {"CPU": 2,"RAM": 32, "HDD": 100}]
 
 Each element in the virtual machine list is a virtual machine with its required resources.
