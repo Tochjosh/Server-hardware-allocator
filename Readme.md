@@ -26,11 +26,10 @@ In summary, these are the lists of commands to run in listed order, to start up 
 
 ```docker
 1. git clone https://github.com/Tochjosh/Server-hardware-allocator.git
-2. cd bouncer-api
-3. docker build (Note that you can skip this step and run the next command to automatically build and start the project)
-4. docker-compose up
-5. docker-compose run web python server_calculator/manage.py makemigrations
-6. docker-compose run web python server_calculator/manage.py migrate
+2. docker build (Note that you can skip this step and run the next command to automatically build and start the project)
+3. docker-compose up
+4. docker-compose run web python server_calculator/manage.py makemigrations
+5. docker-compose run web python server_calculator/manage.py migrate
 ```
 Once the project is up and running, you can access the api on your local browser through this [link](http://0.0.0.0:8000/details)
 
