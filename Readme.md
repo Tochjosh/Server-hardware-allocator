@@ -1,4 +1,4 @@
-# Bouncer API
+# Server resources calculator API
 
 API Service backing client interfaces
 
@@ -14,9 +14,9 @@ API Service backing client interfaces
 
 ## Getting Started
 
-Getting started with this project is very simple, all you need is to have Git and Docker Engine installed on your machine. Then open up your terminal and run this command `git clone git@github.com:decadevs/Bouncer_API_TeamA_Python08.git` to clone the project repository.
+Getting started with this project is very simple, all you need is to have Git and Docker Engine installed on your machine. Then open up your terminal and run this command `https://github.com/Tochjosh/Server-hardware-allocator.git` to clone the project repository.
 
-Change directory into the project folder `cd bouncer-api` and build the base python image used for the project that was specified in **_dockerfile_** by running `docker build .` _Note the dot (.) at end of the command_.
+Change directory into the project folder and build the base python image used for the project that was specified in **_dockerfile_** by running `docker-compose build`
 
 Spin up other services needed for the project that are specified in **_docker-compose.yml_** file by running the command `docker-compose up`. At this moment, your project should be up and running with a warning that _you have unapplied migrations_.
 
@@ -25,20 +25,44 @@ Open up another terminal and run this command `docker-compose exec api python pr
 In summary, these are the lists of commands to run in listed order, to start up the project.
 
 ```docker
-1. git clone git@github.com:decadevs/Bouncer_API_TeamA_Python08.git
+1. git clone https://github.com/Tochjosh/Server-hardware-allocator.git
 2. cd bouncer-api
-3. docker build .
+3. docker build
 4. docker-compose up
-5. docker-compose exec api python project/manage.py makemigrations
-6. docker-compose exec api python project/manage.py migrate
+5. docker-compose run web python server_calculator/manage.py makemigrations
+6. docker-compose run web python server_calculator/manage.py migrate
 ```
+Once the project is up and running, you can access the api on your local browser through this [link](http://0.0.0.0:8000/details)
+
+
+The initial view should look like this:
+
+
+![Alt text](api_initial_view.png?raw=true "api view")
+
+
+## Functionality
+
+This api takes the properties of a server as an object, and also a list of object of properties of virtual machine as shown below:
+
+Server type = {"CPU": 2, "RAM": 32, "HDD": 100}
+Virtual Machines = [{"CPU": 1, "RAM": 16,"HDD": 10}, {"CPU": 1, "RAM": 16, "HDD": 10}, {"CPU": 2,"RAM": 32, "HDD": 100}]
+
+Each element in the virtual machine list is a virtual machine with its required resources.
+
+The API takes these objects, and uses a "first fit" algorithm to calculate the number of this type of server required to handle all the virtual machines optimally.
+
+The image below shows a representation with the above server type and list of virtual machines with the calculated output:
+
+![Alt text](api_test_view.png?raw=true "api view")
+
 
 ## Running Tests
 
 Currently, truthy tests has been provided in each of the application defined in the project, before running the tests with the following command make sure that your api service is up and running.
 
 ```docker
-docker-compose exec api python project/manage.py testclear
+docker-compose run web python server_calculator/manage.py test server_calculator
 
 ```
 
